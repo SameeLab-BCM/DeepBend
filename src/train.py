@@ -27,7 +27,7 @@ def main():
     args = parser.parse_args()
 
     if not (args.model and args.train_dataset and args.validation_dataset and args.hyperparameters and args.encoding):
-        parser.error("Provide all parameters correctly")
+        parser.error("Provide all arguments correctly")
 
     model_name = args.model
     hyperparameter_filename = args.hyperparameters

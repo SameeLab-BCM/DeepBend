@@ -23,15 +23,14 @@ def main():
     parser.add_argument("--test-dataset")
     parser.add_argument("--hyperparameters")
 
-    if not (args.model and args.model_weights and args.encoding and args.hyperparameters):
-        parser.error("Provide all parameters correctly")
-
-    
     args = parser.parse_args()
+    if not (args.model and args.model_weights and args.encoding and args.hyperparameters):
+        parser.error("Provide all arguments correctly")
+
     model_name = args.model
     model_weights_filename = args.model_weights
     test_filename = args.test_dataset
-    hyperparameter_filename = args.hyperparamters
+    hyperparameter_filename = args.hyperparameters
     encoding = args.encoding
 
     hyperparams = get_hyperparameters(hyperparameter_filename)
@@ -44,9 +43,9 @@ def main():
     
     test_dataset = get_dataset(test_filename, encoding)
     
-    x1 = test_dataset["readout"]
-    x2 = test_dataset["forward"]
-    y = test_dataset["reverse"]
+    y = test_dataset["readout"]
+    x1 = test_dataset["forward"]
+    x2 = test_dataset["reverse"]
 
     history = model.evaluate({'forward': x1, 'reverse': x2}, y)
 

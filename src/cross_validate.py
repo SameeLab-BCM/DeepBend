@@ -14,7 +14,7 @@ from statistics import mean
 from train import store_model_performance, store_model_weights, store_training_history, train
 from utils.data_preprocess import get_dataset
 from models.model_dispatcher import get_model
-from utils.utils import get_hyperparameters, get_cross_validation_id
+from utils.utils import get_hyperparameters, get_cross_validation_id, get_model_id
 
 
 def main():
@@ -29,6 +29,10 @@ def main():
     parser.add_argument("--hyperparameters")
 
     args = parser.parse_args()
+
+    if not (args.model and args.encoding and args.dataset and args.k and args.hyperparameters):
+        parser.error("Provide all arguments correctly")
+
     model_name = args.model
     data_filename = args.dataset
     hyperparameter_filename = args.hyperparameters
@@ -90,7 +94,9 @@ def main():
         nn = get_model(model_name)(hyperparameters=hyperparams)
         model = nn.create_model()
         
-        history, validation_history = train(model, hyperparams, {}, {})
+        history, validation_history = train(model, hyperparams, 
+                                            {"forward": train_x1, "reverse": train_x2, "readout": train_y},
+                                            {"forward": val_x1, "reverse": val_x2, "readout": val_y})
         
         print(f"Seed number is {seed}")
 

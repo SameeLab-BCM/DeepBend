@@ -13,7 +13,7 @@ class MultinomialConvolutionLayer(Conv1D):
                  use_bias=False,
                  kernel_initializer='glorot_uniform',
                  kernel_regularizer=None,
-                 __name__='MultinomialConvolutionLayer',
+                 __name__='ConvolutionLayer',
                  **kwargs):
         super(MultinomialConvolutionLayer, self).__init__(filters=filters,
                                                kernel_size=kernel_size,
