@@ -1,0 +1,7 @@
+filters_0 8
+kernel_size_0 40
+regularizer_1 lvariance
+epochs 50
+batch_size 1024
+loss_func coeff_determination
+optimizer adam
