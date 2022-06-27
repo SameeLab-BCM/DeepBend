@@ -16,7 +16,6 @@ from utils.utils import get_model_id, get_hyperparameters
 
 def main():
     start_time = time.time()
-
     parser = argparse.ArgumentParser()
     parser.add_argument("--model")
     parser.add_argument("--encoding", default="one-hot", choices=["one-hot", "dinucleotide"])

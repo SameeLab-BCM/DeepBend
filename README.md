@@ -20,6 +20,7 @@ pip install -r requirements.txt
 5. Train the DeepBend model.
 ```bash
  python src/train.py --model model35 --train-dataset data/dataset_9_train.txt \
+<<<<<<< HEAD
     --validation-dataset data/dataset_8_test.txt \
     --hyperparameters hyperparameters/hyperparameter.txt
  ```
@@ -30,6 +31,16 @@ pip install -r requirements.txt
     --model-weights model_weights/model_weights_file_name
  ```
 7. k-fold cross validation.
+=======
+  --validation-dataset data/dataset_8_test.txt --hyperparameters hyperparameters/hyperparameter.txt
+ ```
+6. Test DeepBend model
+```bash
+ python src/test.py --model model35 --test-dataset data/dataset_9_test.txt \
+  --hyperparameters hyperparameters/hyperparameter.txt --model-weights model_weights/model_weights_file_name
+ ```
+7. K-fold cross validation
+>>>>>>> master
 ```bash
  python src/cross_validate.py --model model35 --dataset data/dataset_6.txt --k 10 \
   --hyperparameters hyperparameters/hyperparameter.txt

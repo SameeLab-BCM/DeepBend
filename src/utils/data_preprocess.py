@@ -92,7 +92,6 @@ class preprocess:
         dict["reverse"] = reverse
         return dict
 
-
 def one_hot_encode_sequences(seqs):
     # The LabelEncoder encodes a sequence of bases as a sequence of
     # integers.
@@ -108,7 +107,6 @@ def one_hot_encode_sequences(seqs):
         integer_encoded = np.array(integer_encoded).reshape(-1, 1)
         one_hot_encoded = one_hot_encoder.fit_transform(integer_encoded)
         one_hot_encoded_seqs.append(one_hot_encoded.toarray()[:-4])
-
     return one_hot_encoded_seqs
 
 

@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-from tensorflow.keras import backend as K
+from keras import backend as K
 from scipy.stats import spearmanr, pearsonr
 
 

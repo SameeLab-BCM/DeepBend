@@ -41,7 +41,6 @@ def main():
     hyperparams = get_hyperparameters(hyperparameter_filename)
 
     dataset = get_dataset(data_filename, encoding)
-
     Y = dataset["readout"]
     X1 = dataset["forward"]
     X2 = dataset["reverse"]
