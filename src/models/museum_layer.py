@@ -31,6 +31,7 @@ class MultinomialConvolutionLayer(Conv1D):
             kernel_regularizer=kernel_regularizer,
             **kwargs
         )
+
         self.run_value = 1
         self.alpha = alpha
         self.beta = beta
@@ -49,7 +50,9 @@ class MultinomialConvolutionLayer(Conv1D):
                             tf.subtract(
                                 tf.math.scalar_mul(self.alpha, x),
                                 tf.expand_dims(
-                                    tf.math.reduce_max(tf.math.scalar_mul(self.alpha, x), axis=1),
+                                    tf.math.reduce_max(
+                                        tf.math.scalar_mul(self.alpha, x), axis=1
+                                    ),
                                     axis=1,
                                 ),
                             ),
@@ -61,7 +64,9 @@ class MultinomialConvolutionLayer(Conv1D):
                                                 tf.math.scalar_mul(self.alpha, x),
                                                 tf.expand_dims(
                                                     tf.math.reduce_max(
-                                                        tf.math.scalar_mul(self.alpha, x),
+                                                        tf.math.scalar_mul(
+                                                            self.alpha, x
+                                                        ),
                                                         axis=1,
                                                     ),
                                                     axis=1,
@@ -84,6 +89,7 @@ class MultinomialConvolutionLayer(Conv1D):
                 ),
                 x_tf,
             )
+
             transf = tf.transpose(filt_list, [1, 2, 0])
             outputs = self.convolution_op(inputs, transf)
         else:
@@ -101,7 +107,9 @@ class MultinomialConvolutionLayer(Conv1D):
                     tf.subtract(
                         tf.math.scalar_mul(self.alpha, x),
                         tf.expand_dims(
-                            tf.math.reduce_max(tf.math.scalar_mul(self.alpha, x), axis=1),
+                            tf.math.reduce_max(
+                                tf.math.scalar_mul(self.alpha, x), axis=1
+                            ),
                             axis=1,
                         ),
                     ),

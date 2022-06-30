@@ -10,7 +10,6 @@ from .utils import get_loss
 from .custom_regularizers import LRange, LVariance, L1Variance, LEntropy
 
 import warnings
-
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
 
@@ -95,6 +94,10 @@ class nn_model:
             kernel_initializer="normal",
             kernel_regularizer=regularizers.l2(0.0005),
             padding="same",
+            use_bias=True,
+            kernel_initializer="normal",
+            kernel_regularizer=regularizers.l2(0.0005),
+            padding="same",
         )
 
         fw_out_2 = conv_2(fw_relu_1)
@@ -120,6 +123,10 @@ class nn_model:
             filters=1,
             kernel_size=relu_2.shape[1],
             data_format="channels_last",
+            use_bias=True,
+            kernel_initializer="normal",
+            kernel_regularizer=reg,
+            activation="linear",
             use_bias=True,
             kernel_initializer="normal",
             kernel_regularizer=reg,
